@@ -25,7 +25,7 @@ class CreateCoursesTable extends Migration
             $table->string('slug')->unique();
 
             $table->string('amount');
-            $table->string('duration')->comment('This should be stored in weeks');
+            $table->integer('duration')->comment('This should be stored in weeks');
             $table->string('zoom_link');
             $table->string('passcode');
 
