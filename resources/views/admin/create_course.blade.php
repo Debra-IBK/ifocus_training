@@ -78,7 +78,7 @@
                         <div class="form-group row">
                             <label class="col-sm-6 col-md-2 col-form-label">Fee</label>
                             <div class="col-sm-6 col-md-10">
-                                <input class="form-control col-8" type="text" id="fee" name="fee">
+                                <input class="form-control col-8" type="text" id="amount" name="amount">
                             </div>
                         </div>
 
@@ -105,83 +105,5 @@
 @endsection
 
 @section('js')
-    <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_SANDBOX_CLIENT_ID') }}"> </script>
 
-    <script>
-        $(document).on('change', "#course", function() {
-
-            if ($('#payment_type').val() == "installment" && $('#course').val() < 3 && $('#course').val() != "") {
-                document.getElementById('fee').value = "$600 (initial deposit)";
-                document.getElementById('amount').value = "600";
-            }
-
-            if ($('#payment_type').val() == "one-time" && $('#course').val() < 3 && $('#course').val() != "") {
-                document.getElementById('fee').value = "$1000";
-                document.getElementById('amount').value = "1000";
-            }
-
-            if ($('#payment_type').val() == "installment" && $('#course').val() == 3) {
-                document.getElementById('fee').value = "$800";
-                document.getElementById('amount').value = "800";
-            }
-
-            if ($('#payment_type').val() == "one-time" && $('#course').val() == 3) {
-                document.getElementById('fee').value = "$1500";
-                document.getElementById('amount').value = "1500";
-            }
-        });
-
-         $(document).on('change', "#payment_type", function() {
-
-            if ($('#payment_type').val() == "installment" && $('#course').val() < 3 && $('#course').val() != "") {
-                document.getElementById('fee').value = "$600 (initial deposit)";
-                document.getElementById('amount').value = "600";
-            }
-
-            if ($('#payment_type').val() == "one-time" && $('#course').val() < 3 && $('#course').val() != "") {
-                document.getElementById('fee').value = "$1000";
-                document.getElementById('amount').value = "1000";
-            }
-
-            if ($('#payment_type').val() == "installment" && $('#course').val() == 3) {
-                document.getElementById('fee').value = "$800";
-                document.getElementById('amount').value = "800";
-            }
-
-            if ($('#payment_type').val() == "one-time" && $('#course').val() == 3) {
-                document.getElementById('fee').value = "$1500";
-                document.getElementById('amount').value = "1500";
-            }
-        });
-
-        paypal.Buttons({
-            createOrder: function() {
-                const data = {
-                    course: $('#course').val(),
-                    payment_type: $('#payment_type').val(),
-                    amount: document.getElementById('amount').value,
-                };
-                return fetch("{{ route('portal.process.payment') }}", {
-                    method: 'post',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(data),
-                }).then(function(res) {
-                    return res.json();
-                }).then(function(data) {
-                    return data.id; // Use the key sent by your server's response, ex. 'id' or 'token'
-                });
-            },
-            onApprove: function(data, actions) {
-                // This function captures the funds from the transaction.
-                return actions.order.capture().then(function(details) {
-                    // This function shows a transaction success message to your buyer.
-                    console.log(details);
-                    alert('Transaction completed by ' + details.payer.name.given_name);
-                });
-            }
-        }).render('#paypal-button-container');
-        //This function displays Smart Payment Buttons on your web page.
-    </script>
 @endsection
