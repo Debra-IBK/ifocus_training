@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, HasRolesAndPermissions; // Our new trait
+    use HasFactory, Notifiable, HasRolesAndPermissions; // Our new trait//
     
     public const STATUS = ['active', 'inactive', 'suspended'];
     public const LEVEL = ['unpaid', 'paid'];
