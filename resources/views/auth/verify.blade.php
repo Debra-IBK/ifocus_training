@@ -4,9 +4,9 @@
   <div class="col-lg-6 d-flex justify-content-center align-items-center min-vh-lg-100">
     <div class="w-100 pt-10 pt-lg-7 pb-7" style="max-width: 25rem;">
       <div class="text-center">
-        <div class="mb-4">
-          <img class="avatar avatar-xxl avatar-4by3" src="{{ asset('backend/assets/svg/illustrations/click.svg') }}" alt="Image Description">
-        </div>
+        <!--<div class="mb-4">-->
+        <!--  <img class="avatar avatar-xxl avatar-4by3" src="{{ asset('backend/assets/svg/illustrations/click.svg') }}" alt="Image Description">-->
+        <!--</div>-->
 
         <h1 class="display-4">{{ __('Verify Your Email Address') }}</h1>
 

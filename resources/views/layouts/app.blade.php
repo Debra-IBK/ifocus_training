@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Betler Multipurpose Forms HTML Template">
-    <meta name="author" content="Ansonika">
+    <meta name="description" content="IFocus Pictures Hands-Online Training">
+    <meta name="author" content="IFocus Pictures">
     <title>IFocus Pictures | Hands-Online Training</title>
 
     <!-- Favicons-->
@@ -63,7 +63,7 @@
                                     Cost:<br>
                                         <ul type="circle">
                                             <li>* One time payment: $1000 </li>
-                                            <li>* Installment Plan: $600 to be paid TWICE within the first month of the training </li>
+                                            <li>* Installment Plan: 2 installments of $600  </li>
 
                                         </ul>
                                     </li>
@@ -78,7 +78,7 @@
                                 Cost:<br>
                                     <ul type="circle">
                                         <li>* One time payment: $1000 </li>
-                                        <li>* Installment Plan: $600 to be paid TWICE within the first month of the training.</li>
+                                        <li>* Installment Plan: 2 installments of $600</li>
 
                                     </ul>
                                 </li>

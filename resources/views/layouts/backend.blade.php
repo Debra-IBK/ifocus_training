@@ -3,6 +3,8 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
+	<meta name="description" content="IFocus Pictures Hands-Online Training">
+    <meta name="author" content="IFocus Pictures">
     <title>IFocus Pictures | Hands-Online Training</title>
 
 	<!-- Site favicon -->
@@ -110,9 +112,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="github-link">
-			    <img src="{{ asset('backend/assets/vendors/images/github.svg') }}" alt="">
-			</div>
+			&nbsp;&nbsp;&nbsp;
 		</div>
 	</div>
 
@@ -155,6 +155,12 @@
 					</li>
 
                     <li>
+						<a href="{{ route('create_course') }}" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-invoice"></span><span class="mtext">Create Course</span>
+						</a>
+					</li>
+
+                    <li>
 						<a href="{{ route('payment-receipt') }}" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-invoice"></span><span class="mtext">Payment Receipt</span>
 						</a>
@@ -164,15 +170,6 @@
 						<a href="{{ route('replay') }}" class="dropdown-toggle no-arrow">
 							<span class="micon icon-copy fi-play-video"></span><span class="mtext">Training Replay</span>
 						</a>
-					</li>
-
-                    <li class="dropdown">
-						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-browser2"></span><span class="mtext">Assignment</span>
-						</a>
-						<ul class="submenu">
-							<li><a href="{{ route('assignment') }}">400</a></li>
-						</ul>
 					</li>
 
 

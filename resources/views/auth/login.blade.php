@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn_1 full-width">
-                        {{ __('Register') }}
+                        {{ __('Login') }}
                     </button>
                 </form>
                 <p class="text-center mt-3 mb-0">New here? <a href="{{ route('register') }}">Sign Up</a></p>
