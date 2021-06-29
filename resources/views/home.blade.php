@@ -12,7 +12,7 @@
         /* Media query for desktop viewport */
         @media screen and (min-width: 400px) {
             #paypal-button-container {
-                width: 250px;
+                width: 100%;
             }
         }
 
@@ -39,7 +39,9 @@
 
                         {{ __('You are logged in!') }} <br>
                         {{-- {{ __('Please proceed to make payment') }} --}}
-                        <p class="font-16 max-width-600" >Please before you proceed to make payments make sure you've read the   <a href="{{ asset('backend/assets/img/file1.pdf') }}"  style="color: red" target="_blank">full details </a> about the training.</p>
+                        <p class="font-16 max-width-600">Please before you proceed to make payments make sure you've read
+                            the <a href="{{ asset('backend/assets/img/file1.pdf') }}" style="color: red"
+                                target="_blank">full details </a> about the training.</p>
                     </div>
                 </div>
             </div>
@@ -118,8 +120,10 @@
                         <input class="form-control" type="hidden" id="amount" name="amount">
 
                         <div class="form-group row">
-                            <label class="col-sm-6 col-md-2 col-form-label"></label>
-                            <div class="col-sm-6 col-md-7" id="paypal-button-container"> </div>
+                            <label class="col-sm-6 col-md-2 col-form-label"> </label>
+                            <div class="col-sm-6 col-md-10">
+                                <div class="col-8" style="padding: 0" id="paypal-button-container"></div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -155,7 +159,7 @@
             }
         });
 
-         $(document).on('change', "#payment_type", function() {
+        $(document).on('change', "#payment_type", function() {
 
             if ($('#payment_type').val() == "installment" && $('#course').val() < 3 && $('#course').val() != "") {
                 document.getElementById('fee').value = "$600 (initial deposit)";
