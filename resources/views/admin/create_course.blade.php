@@ -54,8 +54,8 @@
                                 data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
                         </div> --}}
                     </div>
-                    <form method="POST" role="form">
-
+                    <form method="POST" action="{{ route('create_course') }}" role="form">
+                        @csrf
                         <div class="form-group row">
                             <label class="col-sm-6 col-md-2 col-form-label">Course name</label>
                             <div class="col-sm-6 col-md-10">
@@ -88,6 +88,21 @@
                                 <input class="form-control col-8" type="text" id="duration" name="duration">
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-md-2 col-form-label">Zoom Link</label>
+                            <div class="col-sm-6 col-md-10">
+                                <input class="form-control col-8" type="text" id="zoom_link" name="zoom_link">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-md-2 col-form-label">Passcode</label>
+                            <div class="col-sm-6 col-md-10">
+                                <input class="form-control col-8" type="text" id="passcode" name="passcode">
+                            </div>
+                        </div>
+
 
                         <div class="form-group row">
                             <label class="col-sm-6 col-md-2 col-form-label"></label>

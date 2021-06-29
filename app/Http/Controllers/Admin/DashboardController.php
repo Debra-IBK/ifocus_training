@@ -36,6 +36,8 @@ class DashboardController extends Controller
             'payment_type'=>$request ->payment_type,
             'amount'=>$request ->amount,
             'duration'=>$request ->duration,
+            'zoom_link'=>$request ->zoom_link,
+            'passcode'=>$request ->passcode,
             'official'=>auth()->id(),
         ]);
             return back();

@@ -14,6 +14,8 @@ class Courses extends Model
         'slug',
         'payment_type',
         'duration',
+        'zoom_link',
+        'passcode'
     ];
 
 }

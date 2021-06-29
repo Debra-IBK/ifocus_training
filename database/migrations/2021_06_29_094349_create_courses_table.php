@@ -22,6 +22,8 @@ class CreateCoursesTable extends Migration
             $table->string('payment_type');
             $table->string('amount');
             $table->string('duration');
+            $table->string('zoom_link');
+            $table->string('passcode');
             $table->string('offical');
             $table->timestamps();
         });
