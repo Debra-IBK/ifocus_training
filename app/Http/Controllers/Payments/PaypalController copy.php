@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Payments;
 
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
@@ -46,6 +47,9 @@ class PaypalController extends Controller
 
     protected function payment_processor(Request $request)
     {
+        Payment::create([
+            
+        ]);
         return Http::withHeaders([
             'Content-Type' => 'application/json',
         ])->withToken($this->accessToken)->post($this->baseUrl . 'v2/checkout/orders', [

@@ -14,19 +14,11 @@ class User extends Authenticatable implements MustVerifyEmail
     const STATUS = ['active' => 'active', 'inactive' => 'inactive'];
     const USER_GROUP = ['admin' => 'Administartor', 'student' => 'Student', 'facilitator' => 'Facilitator'];
 
-    // /**
-    //  * The attributes that are mass assignable.
-    //  *
-    //  * @var array
-    //  */
-    // protected $fillable = [
-    //     'fname',
-    //     'lname',
-    //     'email',
-    //     'password',
-    //     'phone_no',
-    // ];
-
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
     protected $guarded = ['uuid', 'id', 'created_at', 'updated_at', 'deleted_at'];
 
     /**

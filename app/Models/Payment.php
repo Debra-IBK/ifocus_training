@@ -23,6 +23,15 @@ class Payment extends Model
      */
     protected $hidden = ['user_id'];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'meta_data' => 'array',
+    ];
+
     /** 
      * The "booted" method of the model.
      *

@@ -94,8 +94,9 @@
                             <div class="col-sm-6 col-md-10">
                                 <select class="custom-select col-8" id="course" name="course">
                                     <option selected disabled selected="0" value="">Select course</option>
-                                    <option value="1">Camera Handling</option>
-                                    <option value="2">Video Editing</option>
+                                    @foreach ($courses as $course)
+                                        <option value="{{ $course['id'] }}">{{ $course['name'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -202,8 +203,12 @@
                 });
             },
             onApprove: function(data, actions) {
-                // This function captures the funds from the transaction.
                 return actions.order.capture().then(function(details) {
+                    const info = {
+                        course: $('#course').val(),
+                        payment_type: $('#payment_type').val(),
+                        amount: document.getElementById('amount').value,
+                    };
                     return fetch("{{ route('portal.capture.payment') }}", {
                         headers: {
                             'content-type': 'application/json'
@@ -211,7 +216,7 @@
                         body: JSON.stringify({
                             orderID: details.id,
                             details: details,
-                            course_id: 
+                            course_id:
                         })
                     })
                 }).then(function(details) {
