@@ -204,6 +204,17 @@
             onApprove: function(data, actions) {
                 // This function captures the funds from the transaction.
                 return actions.order.capture().then(function(details) {
+                    return fetch("{{ route('portal.capture.payment') }}", {
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            orderID: details.id,
+                            details: details,
+                            course_id: 
+                        })
+                    })
+                }).then(function(details) {
                     // This function shows a transaction success message to your buyer.
                     console.log(details);
                     alert('Transaction completed by ' + details.payer.name.given_name);

@@ -5,28 +5,29 @@ namespace App\Models;
 use App\Traits\HasRolesAndPermissions;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, HasRolesAndPermissions; // Our new trait//
-    
-    public const STATUS = ['active', 'inactive', 'suspended'];
-    public const LEVEL = ['unpaid', 'paid'];
+    use  Notifiable, HasRolesAndPermissions; // Our new trait//
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'fname',
-        'lname',
-        'email',
-        'password',
-        'phone_no',
-    ];
+    const STATUS = ['active' => 'active', 'inactive' => 'inactive'];
+    const USER_GROUP = ['admin' => 'Administartor', 'student' => 'Student', 'facilitator' => 'Facilitator'];
+
+    // /**
+    //  * The attributes that are mass assignable.
+    //  *
+    //  * @var array
+    //  */
+    // protected $fillable = [
+    //     'fname',
+    //     'lname',
+    //     'email',
+    //     'password',
+    //     'phone_no',
+    // ];
+
+    protected $guarded = ['uuid', 'id', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -34,6 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
+        'id',
         'password',
         'remember_token',
     ];
@@ -55,5 +57,4 @@ class User extends Authenticatable implements MustVerifyEmail
             $user->uuid = (string) \Illuminate\Support\Str::uuid(); // Create uuid when a new user is to be created
         });
     }
-
 }

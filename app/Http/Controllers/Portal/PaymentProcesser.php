@@ -36,12 +36,18 @@ class PaymentProcesser extends Controller
      */
     public function captureOrder(Request $request)
     {
-        (array) $valid = $request->validate([
+        // (array) $valid = ;
+        return $this->captured_order($request->validate([
             'orderID' => 'required|string',
-        ]);
+            'details' => 'required|json'
+        ]));
+    }
+
+    protected function captured_order(array $validated)
+    {
         // Find the course in your database
         // Use payment selected from your database
-        $paypal = new PaypalController();
-        return $paypal->handleOrder($request);
+        // $paypal = new PaypalController();
+        // return $paypal->handleOrder($request);
     }
 }

@@ -14,17 +14,22 @@ class CreateCoursesTable extends Migration
     public function up()
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->charset ='utf8mb4';
-            $table->collation ='utf8mb4_unicode_ci';
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
+
             $table->id();
+            $table->foreignId('user_id')->comment('The User who created the course');
+
             $table->string('name');
-            $table->string('slug');
-            $table->string('payment_type');
+            $table->string('slug')->unique();
+
             $table->string('amount');
-            $table->string('duration');
+            $table->string('duration')->comment('This should be stored in weeks');
             $table->string('zoom_link');
             $table->string('passcode');
-            $table->string('offical');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

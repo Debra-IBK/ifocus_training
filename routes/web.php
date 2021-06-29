@@ -36,7 +36,6 @@ Route::post('process-payment', [App\Http\Controllers\Portal\PaymentProcesser::cl
 Route::post('capture-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, 'captureOrder'])->name('portal.capture.payment');
 
 
-
 Route::get('/create_course', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->middleware('auth')->name('create_course');
 Route::post('/create_course', [App\Http\Controllers\Admin\DashboardController::class, 'submit_course'])->middleware('auth')->name('create_course');
 
