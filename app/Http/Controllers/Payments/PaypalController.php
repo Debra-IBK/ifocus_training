@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Payments;
 
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
@@ -68,7 +69,7 @@ class PaypalController extends Controller
 
     protected function payment_processor(Request $request)
     {
-        return Http::withHeaders([
+        $response =  Http::withHeaders([
             'Content-Type' => 'application/json',
         ])->withToken($this->accessToken)->post($this->baseUrl . 'v2/checkout/orders', [
             'intent' => 'CAPTURE',
@@ -81,6 +82,14 @@ class PaypalController extends Controller
                 ]
             ],
         ])->throw()->json();
+
+        Payment::create([
+            'course_id' => $request['course'],
+            'amount'    => $request['amount'],
+            'paypal_id' => $response['id'],
+            'status'    => Payment::STATUS['pending']
+        ]);
+        return $response;
     }
 
     protected function setBaseUrl()

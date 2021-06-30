@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Portal;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Payments\PaypalController;
-use Illuminate\Http\Request;
 
 class PaymentProcesser extends Controller
 {
@@ -21,9 +22,9 @@ class PaymentProcesser extends Controller
     public function __invoke(Request $request)
     {
         (array) $valid = $request->validate([
-            'course' => 'required|numeric',
-            'payment_type' => 'required|string|in:one-time,installment',
-            'amount'       => 'required|numeric'
+            'course'        => 'required|numeric',
+            'payment_type'  => 'required|string|in:one-time,installment',
+            'amount'        => 'required|numeric'
         ]);
         // Find the course in your database
         // Use payment selected from your database
@@ -49,6 +50,10 @@ class PaymentProcesser extends Controller
 
     protected function captured_order(array $validated)
     {
+         Log::debug('captured', $validated);
+         return response()->json([
+             'updated'
+         ])
         // Find the course in your database
         // Use payment selected from your database
         // $paypal = new PaypalController();

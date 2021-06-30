@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
         $user1->email = 'yinka@yinka.com';
         $user1->phone_no = '08023423491';
         $user1->password = bcrypt('secret');
+        $user1->email_verified_at = now();
         $user1->save();
        
 
@@ -31,6 +32,7 @@ class UserSeeder extends Seeder
         $user2->lname = 'Thomas';
         $user2->email = 'mike@thomas.com';
         $user2->phone_no = '08023423491';
+        $user2->email_verified_at = now();
         $user2->password = bcrypt('secret');
         $user2->save();
     }
