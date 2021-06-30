@@ -73,7 +73,6 @@
 					<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
                             <i class="icon-copy dw dw-user1"></i>
-							{{-- <img src="{{ asset('backend/assets/vendors/images/photo1.jpg') }}" alt=""> --}}
 						</span>
 						<span class="user-name">
                             <!-- Authentication Links -->
@@ -92,14 +91,15 @@
                                 @endif
                             </ul>
                             @else
-                                        {{ Auth::user()->fname }}{{ Auth::user()->lname }}
+
+                                        {{ auth()->user()->full_name }}
 
                             @endguest
                           </span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-						<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
-						<a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
+						<a class="dropdown-item" href="{{ route('portal.profile') }}"><i class="dw dw-user1"></i> Profile</a>
+						<a class="dropdown-item" href="{{ asset('backend/assets/img/file1.pdf') }}" target="_blank"><i class="dw dw-help"></i> Help</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();"><i class="dw dw-logout"></i>
@@ -136,7 +136,7 @@
 						</a>
 					</li>
                     <li>
-						<a href="{{ route('home') }}" class="dropdown-toggle no-arrow">
+						<a href="{{ route('portal.make-payment') }}" class="dropdown-toggle no-arrow">
 							<span class="micon icon-copy fa fa-credit-card"></span><span class="mtext">Make Payment</span>
 						</a>
 					</li>
@@ -155,13 +155,13 @@
 					</li>
 
                     <li>
-						<a href="{{ route('create_course') }}" class="dropdown-toggle no-arrow">
+						<a href="{{ route('admin.create_course') }}" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-invoice"></span><span class="mtext">Create Course</span>
 						</a>
 					</li>
 
                     <li>
-						<a href="{{ route('payment-receipt') }}" class="dropdown-toggle no-arrow">
+						<a href="{{ route('portal.payment-receipt') }}" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-invoice"></span><span class="mtext">Payment Receipt</span>
 						</a>
 					</li>
@@ -198,11 +198,11 @@
 	<script src="{{ asset('backend/assets/vendors/scripts/process.js') }}"></script>
 	<script src="{{ asset('backend/assets/vendors/scripts/layout-settings.js') }}"></script>
 	{{-- <script src="{{ asset('backend/assets/src/plugins/apexcharts/apexcharts.min.js') }}"></script> --}}
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
+	{{-- <script src="{{ asset('backend/assets/src/plugins/datatables/js/jquery.dataTables.min.js') }}"></script> --}}
+	{{-- <script src="{{ asset('backend/assets/src/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
 	<script src="{{ asset('backend/assets/src/plugins/datatables/js/dataTables.responsive.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/responsive.bootstrap4.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/vendors/scripts/dashboard.js') }}"></script>
+	<script src="{{ asset('backend/assets/src/plugins/datatables/js/responsive.bootstrap4.min.js') }}"></script> --}}
+	{{-- <script src="{{ asset('backend/assets/vendors/scripts/dashboard.js') }}"></script> --}}
     @yield('js')
 
 

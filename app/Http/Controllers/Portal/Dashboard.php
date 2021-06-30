@@ -24,7 +24,7 @@ class Dashboard extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home', ['courses' => \App\Models\Courses::all()]);
     }
 
 
@@ -32,4 +32,22 @@ class Dashboard extends Controller
     {
         return view('backend/replay');
     }
+
+    public function profile()
+    {
+        return view('backend/profile');
+    }
+
+
+    public function make_payment()
+    {
+        return view('backend/payment', ['courses' => \App\Models\Courses::all()]);
+    }
+
+    public function  payment_receipt()
+    {
+        return view('backend/receipt');
+    }
+   
+
 }

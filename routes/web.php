@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Portal\Dashboard;
+use App\Http\Controllers\Portal\PaymentProcesser;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +20,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 */
 
 Route::get('/', function () {
-    return view('auth.register');
+    return view('auth.login');
 });
 
 //Auth::routes();
@@ -28,14 +31,29 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
 Route::get('/replay', [App\Http\Controllers\Portal\Dashboard::class, 'replay_videos'])->middleware('verified')->name('replay');
 Route::get('/payment-receipt', [App\Http\Controllers\Portal\Dashboard::class, 'payment-receipt'])->middleware('verified')->name('payment-receipt');
-Route::get('/assignment', [App\Http\Controllers\Portal\Assignment::class, 'assignment'])->middleware('verified')->name('assignment');
 
+Route::namespace('App\Http\Controllers\Portal')->prefix('portal')->name('portal.')->middleware('verified')->group(function(){
 
+    Route::get('/home', [Dashboard::class, 'index'])->middleware('verified')->name('home');
+
+    Route::get('/replay', [Dashboard::class, 'replay_videos'])->middleware('verified')->name('replay');
+    Route::get('/join-class', [Dashboard::class, 'payment-receipt'])->middleware('verified')->name('payment-receipt');
+    
+    Route::get('/profile', [Dashboard::class, 'profile'])->middleware('verified')->name('profile');
+    
+    Route::get('/make-payment', [Dashboard::class, 'make_payment'])->middleware('verified')->name('make-payment');
+    Route::get('/payment-receipt', [Dashboard::class, 'payment_receipt'])->middleware('verified')->name('payment-receipt');
+    Route::post('process-payment', [PaymentProcesser::class, '__invoke'])->middleware('verified')->name('process.payment');
+    Route::post('capture-payment', [PaymentProcesser::class, 'captureOrder'])->middleware('verified')->name('capture.payment');
+    
+});
 
 Route::post('process-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, '__invoke'])->name('portal.process.payment');
 Route::post('capture-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, 'captureOrder'])->name('portal.capture.payment');
 
-
-Route::get('/create_course', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->middleware('auth')->name('create_course');
-Route::post('/create_course', [App\Http\Controllers\Admin\DashboardController::class, 'submit_course'])->middleware('auth')->name('create_course');
+Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function(){
+    Route::get('/admin-home', [CourseController::class, 'index'])->middleware('auth')->name('home');
+    Route::get('/create_course', [CourseController::class, 'index'])->middleware('auth')->name('create_course');
+    Route::post('/create_course', [CourseController::class, 'submit_course'])->middleware('auth')->name('create_course');
+});
 

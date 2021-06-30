@@ -49,4 +49,9 @@ class User extends Authenticatable implements MustVerifyEmail
             $user->uuid = (string) \Illuminate\Support\Str::uuid(); // Create uuid when a new user is to be created
         });
     }
+
+    public function getFullNameAttribute(){
+
+        return "{$this->fname} {$this->lname}";
+    }
 }

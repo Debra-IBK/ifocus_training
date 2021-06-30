@@ -54,7 +54,7 @@
                                 data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
                         </div> --}}
                     </div>
-                    <form method="POST" action="{{ route('create_course') }}" role="form">
+                    <form method="POST" action="{{ route('admin.create_course') }}" role="form">
                         @csrf
                         <div class="form-group row">
                             <label class="col-sm-6 col-md-2 col-form-label">Course name</label>
