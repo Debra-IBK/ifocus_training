@@ -204,21 +204,16 @@
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    const info = {
-                        course: $('#course').val(),
-                        payment_type: $('#payment_type').val(),
-                        amount: document.getElementById('amount').value,
-                    };
                     return fetch("{{ route('portal.capture.payment') }}", {
+                        method: 'post',
                         headers: {
                             'content-type': 'application/json'
                         },
-                        body: JSON.stringify({
+                        body: {
                             orderID: details.id,
                             details: details,
-                            course_id:
-                        })
-                    })
+                        }
+                    });
                 }).then(function(details) {
                     // This function shows a transaction success message to your buyer.
                     console.log(details);
