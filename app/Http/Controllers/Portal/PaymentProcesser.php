@@ -53,7 +53,7 @@ class PaymentProcesser extends Controller
          Log::debug('captured', $validated);
          return response()->json([
              'updated'
-         ])
+         ]);
         // Find the course in your database
         // Use payment selected from your database
         // $paypal = new PaypalController();

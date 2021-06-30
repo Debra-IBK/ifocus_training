@@ -54,4 +54,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return "{$this->fname} {$this->lname}";
     }
+
+    public function getRouteKeyName(){
+        return 'uuid';
+    }
 }

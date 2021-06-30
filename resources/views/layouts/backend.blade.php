@@ -167,14 +167,14 @@
 					</li>
 
                     <li>
-						<a href="{{ route('replay') }}" class="dropdown-toggle no-arrow">
+						<a href="{{ route('portal.replay') }}" class="dropdown-toggle no-arrow">
 							<span class="micon icon-copy fi-play-video"></span><span class="mtext">Training Replay</span>
 						</a>
 					</li>
 
 
 					<li>
-						<a href="{{ route('replay') }}" target="_blank" class="dropdown-toggle no-arrow">
+						<a href="{{ route('portal.replay') }}" target="_blank" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-certificate"></span>
 							<span class="mtext">Certification </span>
 						</a>

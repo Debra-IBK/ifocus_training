@@ -16,7 +16,7 @@ class CourseController extends Controller
 
     public function index()
     {
-        return view('admin/create_course');
+        return view('admin/courses/create');
     }
 
     public function submit_course(Request $request)

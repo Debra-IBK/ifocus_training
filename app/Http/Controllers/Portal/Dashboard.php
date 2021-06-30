@@ -24,7 +24,7 @@ class Dashboard extends Controller
      */
     public function index()
     {
-        return view('home', ['courses' => \App\Models\Courses::all()]);
+        return view('backend/home');
     }
 
 

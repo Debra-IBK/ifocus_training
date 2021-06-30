@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         $user1 = new User();
         $user1->fname = 'Oluyinka';
         $user1->lname = 'Deo';
-        $user1->email = 'yinka@yinka.com';
+        $user1->email = 'debbieibk8@gmail.com';
         $user1->phone_no = '08023423491';
         $user1->password = bcrypt('secret');
         $user1->email_verified_at = now();

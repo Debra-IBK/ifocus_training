@@ -44,4 +44,6 @@ class Payment extends Model
             $payment->reference_id = \App\Traits\GenerateUniqueIdentity::generateReference('payments', 'reference_id'); // Generate Unique Wallet ID
         });
     }
+
+    
 }

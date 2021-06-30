@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Portal\Dashboard;
 use App\Http\Controllers\Portal\PaymentProcesser;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,18 +30,13 @@ Auth::routes(['verify' => true]);
 
 // Only verified users may access this route...
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');
-Route::get('/replay', [App\Http\Controllers\Portal\Dashboard::class, 'replay_videos'])->middleware('verified')->name('replay');
-Route::get('/payment-receipt', [App\Http\Controllers\Portal\Dashboard::class, 'payment-receipt'])->middleware('verified')->name('payment-receipt');
 
 Route::namespace('App\Http\Controllers\Portal')->prefix('portal')->name('portal.')->middleware('verified')->group(function(){
 
     Route::get('/home', [Dashboard::class, 'index'])->middleware('verified')->name('home');
-
     Route::get('/replay', [Dashboard::class, 'replay_videos'])->middleware('verified')->name('replay');
     Route::get('/join-class', [Dashboard::class, 'payment-receipt'])->middleware('verified')->name('payment-receipt');
-    
     Route::get('/profile', [Dashboard::class, 'profile'])->middleware('verified')->name('profile');
-    
     Route::get('/make-payment', [Dashboard::class, 'make_payment'])->middleware('verified')->name('make-payment');
     Route::get('/payment-receipt', [Dashboard::class, 'payment_receipt'])->middleware('verified')->name('payment-receipt');
     Route::post('process-payment', [PaymentProcesser::class, '__invoke'])->middleware('verified')->name('process.payment');
@@ -48,12 +44,16 @@ Route::namespace('App\Http\Controllers\Portal')->prefix('portal')->name('portal.
     
 });
 
-Route::post('process-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, '__invoke'])->name('portal.process.payment');
-Route::post('capture-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, 'captureOrder'])->name('portal.capture.payment');
+// Route::post('process-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, '__invoke'])->name('portal.process.payment');
+// Route::post('capture-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, 'captureOrder'])->name('portal.capture.payment');
 
 Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function(){
-    Route::get('/admin-home', [CourseController::class, 'index'])->middleware('auth')->name('home');
+    Route::get('/home', [DashboardController::class, 'index'])->middleware('auth')->name('home');
     Route::get('/create_course', [CourseController::class, 'index'])->middleware('auth')->name('create_course');
     Route::post('/create_course', [CourseController::class, 'submit_course'])->middleware('auth')->name('create_course');
+
+    Route::resource('users', 'UsersManagementContoller');
 });
+
+
 
