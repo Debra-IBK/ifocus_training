@@ -190,7 +190,7 @@
                     payment_type: $('#payment_type').val(),
                     amount: document.getElementById('amount').value,
                 };
-                return fetch("{{ route('portal.process.payment') }}", {
+                return fetch("{{ route('portal.process-payment') }}", {
                     method: 'post',
                     headers: {
                         'content-type': 'application/json'
