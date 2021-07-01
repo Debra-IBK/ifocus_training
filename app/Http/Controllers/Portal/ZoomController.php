@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Portal;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Zoom extends Controller
+class ZoomController extends Controller
 {
     //
     public function __construct()
@@ -27,5 +27,4 @@ class Zoom extends Controller
     {
         return view('backend/join_zoom');
     }
-
 }

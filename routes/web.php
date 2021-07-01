@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Portal\Dashboard;
 use App\Http\Controllers\Portal\PaymentProcesser;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Portal\Zoom;
+use App\Http\Controllers\Portal\ZoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,13 +36,13 @@ Route::namespace('App\Http\Controllers\Portal')->prefix('portal')->name('portal.
 
     Route::get('/home', [Dashboard::class, 'index'])->middleware('verified')->name('home');
     Route::get('/replay', [Dashboard::class, 'replay_videos'])->middleware('verified')->name('replay');
-    Route::get('/zoom', [Zoom::class, 'index'])->middleware('verified')->name('zoom');
-    Route::get('/join-zoom', [Zoom::class, 'join_zoom'])->middleware('verified')->name('join-zoom');
-    Route::get('/profile', [Dashboard::class, 'profile'])->middleware('verified')->name('profile');
-    Route::get('/make-payment', [Dashboard::class, 'make_payment'])->middleware('verified')->name('make-payment');
-    Route::get('/payment-receipt', [Dashboard::class, 'payment_receipt'])->middleware('verified')->name('payment-receipt');
-    Route::post('process-payment', [PaymentProcesser::class, '__invoke'])->middleware('verified')->name('process-payment');
-    Route::post('capture-payment', [PaymentProcesser::class, 'captureOrder'])->middleware('verified')->name('capture-payment');
+    Route::get('/zoom', [ZoomController::class, 'index'])->name('zoom');
+    Route::get('/join-zoom', [ZoomController::class, 'join_zoom'])->name('join-zoom');
+    Route::get('/profile', [Dashboard::class, 'profile'])->name('profile');
+    Route::get('/make-payment', [Dashboard::class, 'make_payment'])->name('make-payment');
+    Route::get('/payment-receipt', [Dashboard::class, 'payment_receipt'])->name('payment-receipt');
+    Route::post('process-payment', [PaymentProcesser::class, '__invoke'])->name('process-payment');
+    Route::post('capture-payment', [PaymentProcesser::class, 'captureOrder'])->name('capture-payment');
     
 });
 
