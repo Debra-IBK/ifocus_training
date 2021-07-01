@@ -44,8 +44,8 @@ Route::namespace('App\Http\Controllers\Portal')->prefix('portal')->name('portal.
     
 });
 
-Route::post('process-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, '__invoke'])->name('portal.process.payment');
-Route::post('capture-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, 'captureOrder'])->name('portal.capture.payment');
+Route::post('process-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, '__invoke'])->name('portal.process-payment');
+Route::post('capture-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, 'captureOrder'])->name('portal.capture-payment');
 
 Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function(){
     Route::get('/home', [DashboardController::class, 'index'])->middleware('auth')->name('home');
