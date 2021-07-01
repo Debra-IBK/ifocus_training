@@ -31,7 +31,7 @@ class UserCourse extends Model
      */
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 
      /**
@@ -44,6 +44,6 @@ class UserCourse extends Model
     
     public static function getPaidCourse(User $user)
     {
-        return UserCourse::where('user_id', $user->id)->with(['course', 'user'])->first();
+        return UserCourse::where('user_id', $user->id)->with(['course'])->latest('created_at')->take(20)->get();
     }
 }

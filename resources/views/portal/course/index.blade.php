@@ -28,31 +28,39 @@
     </div>
 
     <div class="card-box mb-30">
+        @if ($courses->isNotEmpty())
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Course Name</th>
+                        <th scope="col">Course Duration </th>
+                        <th scope="col">Course Date </th>
+                        <th scope="col">Actions </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($courses as $user)
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <th scope="row">{{ $user['course']['name'] }}</th>
+                            <th scope="row">{{ $user['course']['duration'] }} Weeks</th>
+                            <th scope="row"> {{ $user['course']['created_at'] }} </th>
+                            <th scope="row"> <a href="#" class="btn btn-primary btn-sm">Join Now</a> </th>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <div class="title">
+                <h4>No Course Registered for yet?</h4>
+            </div>
+        @endif
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Course Name</th>
-                    <th scope="col">Course Duration </th>
-                    <th scope="col">Payment Date </th>
-                    <th scope="col">Actions </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <th scope="row">1</th>
-                    <th scope="row">1</th>
-                    <th scope="row">1</th>
-                    <th scope="row">1</th>
-                </tr>
-            </tbody>
-        </table>
 
     </div>
 @endsection
 
 @push('js')
-
+    {{--  --}}
 @endpush
