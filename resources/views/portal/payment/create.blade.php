@@ -97,8 +97,8 @@
         $(document).on('change', "#course", function() {
 
             if ($('#payment_type').val() == "installment" && $('#course').val() < 3 && $('#course').val() != "") {
-                document.getElementById('fee').value = "$600 (initial deposit)";
-                document.getElementById('amount').value = "600";
+                document.getElementById('fee').value = "$500 (initial deposit)";
+                document.getElementById('amount').value = "500";
             }
 
             if ($('#payment_type').val() == "one-time" && $('#course').val() < 3 && $('#course').val() != "") {
@@ -120,8 +120,8 @@
         $(document).on('change', "#payment_type", function() {
 
             if ($('#payment_type').val() == "installment" && $('#course').val() < 3 && $('#course').val() != "") {
-                document.getElementById('fee').value = "$600 (initial deposit)";
-                document.getElementById('amount').value = "600";
+                document.getElementById('fee').value = "$500 (initial deposit)";
+                document.getElementById('amount').value = "500";
             }
 
             if ($('#payment_type').val() == "one-time" && $('#course').val() < 3 && $('#course').val() != "") {
@@ -163,7 +163,7 @@
                 // This function captures the funds from the transaction.
                 return actions.order.capture().then(function(details) {
                     // This function shows a transaction success message to your buyer.
-                    window.location.replace("http://ifocus/portal/payment/captured/"+details.id);
+                    window.location.replace("http://ifocustraining/portal/payment/captured/"+details.id);
                 });
             }
         }).render('#paypal-button-container');

@@ -52,9 +52,13 @@
 	                </div>
 	                <!-- /social -->
 	                <div>
-	                    <h1>Hands-Online Training</h1>
+                        <h1>WELCOME!!!</h1>
+                        <h4  style="color: white">THANK YOU FOR SHOWING INTEREST IN </h4>
+	                    <h4 style="color: white">HANDS-ON<span style="color: red">LINE</span> TRAINING</h4>
+                        {{-- <h4 style="color: white">WITH</h4> --}}
+                        <h4 style="color: white">WITH OLUYINKA DAVIDS</h4>
                         <p></p>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-sm-6 ">
                                 <h5 style="color: white"><u>Video Editing</u></h5>
                                     Duration: 3 months<br><br>
@@ -84,11 +88,11 @@
                                 </li>
                             </ul>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <a href="{{ asset('backend/assets/img/file1.pdf') }}" class="btn_1 rounded pulse_bt plus_icon btn_play"> BEFORE YOU REGISTER PLEASE CLICK ON THIS BUTTON TO SEE FULL DETAILS </a>
+                        <a href="{{ asset('backend/assets/img/file1.pdf') }}" class="btn_1 rounded pulse_bt plus_icon btn_play"> CLICK TO SEE DETAILS </a>
                         <p></p>
-                        <h4 style="color: white">NOTE: All classes will be on zoom</u></h4>
+                        {{-- <h4 style="color: white">NOTE: All classes will be on zoom</u></h4> --}}
 
 	                </div>
 	            </div>

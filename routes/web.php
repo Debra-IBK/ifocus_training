@@ -53,12 +53,12 @@ Route::prefix('portal')->name('portal.')->middleware(['auth', 'verified'])->grou
         Route::get('/', [CourseController::class, 'index'])->name('index');
     });
 
-    Route::get('/replay', [Dashboard::class, 'replay_videos'])->name('replay');
+    Route::get('/replay', [DashboardController::class, 'replay_videos'])->name('replay');
     Route::get('/zoom', [ZoomController::class, 'index'])->name('zoom');
     Route::get('/join-zoom', [ZoomController::class, 'join_zoom'])->name('join-zoom');
-    Route::get('/profile', [Dashboard::class, 'profile'])->name('profile');
+    Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
     // Route::get('/make-payment', [Dashboard::class, 'make_payment'])->name('make-payment');
-    Route::get('/payment-receipt', [Dashboard::class, 'payment_receipt'])->name('payment-receipt');
+    Route::get('/payment-receipt', [DashboardController::class, 'payment_receipt'])->name('payment-receipt');
 });
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
