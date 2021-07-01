@@ -27,6 +27,9 @@ class CreateCoursesTable extends Migration
             $table->string('amount');
             $table->string('meeting_id');
             $table->integer('duration')->comment('This should be stored in weeks');
+            $table->string('start_date');
+            $table->string('end_date');
+            $table->string('payment_exp_date');
             $table->string('zoom_link');
             $table->string('passcode');
 

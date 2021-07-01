@@ -45,7 +45,7 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <th scope="row">{{ $user['course']['name'] }}</th>
                             <th scope="row">{{ $user['course']['duration'] }} Weeks</th>
-                            <th scope="row"> {{ $user['course']['created_at'] }} </th>
+                            <th scope="row"> {{ $user['course']['start_date'] }} </th>
                             <th scope="row"> <a href="#" class="btn btn-primary btn-sm">Join Now</a> </th>
                         </tr>
                     @endforeach

@@ -21,6 +21,9 @@ class CourseSeeder extends Seeder
         $course1->slug = 'video_editing';
         $course1->amount = '$1000';
         $course1->duration = '13';
+        $course1->start_date = '2021-08-01 19:16:40';
+        $course1->end_date = '2021-10-31 19:16:40';
+        $course1->payment_exp_date = '2021-10-31 19:16:40';
         $course1->zoom_link = "https://us05web.zoom.us/j/8616081209?pwd=dkEwVEVIK2R1RmRHaENYREFDY1hJUT09";
         $course1->meeting_id = '861 608 1209';
         $course1->passcode = 'Editing';
@@ -33,6 +36,9 @@ class CourseSeeder extends Seeder
         $course2->slug = 'cinimatography';
         $course2->amount = '$1000';
         $course2->duration = '13';
+        $course2->start_date = '2021-08-01 19:16:40';
+        $course2->end_date = '2021-10-31 19:16:40';
+        $course2->payment_exp_date = '2021-10-31 19:16:40';
         $course2->zoom_link = "https://us05web.zoom.us/j/8616081209?pwd=dkEwVEVIK2R1RmRHaENYREFDY1hJUT09";
         $course2->meeting_id = '861 608 1209';
         $course2->passcode = 'Editing';
