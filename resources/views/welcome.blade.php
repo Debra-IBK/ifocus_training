@@ -43,7 +43,7 @@
   <body>
 	<!-- Start header -->
 	<header>
-		<a href="index.html" class="logo"><img src="{{ asset('frontend/assets/img/logowhite.png') }}" alt=""  height="108" width="192"/></a>
+		<a href="#" class="logo"><img src="{{ asset('frontend/assets/img/logowhite.png') }}" alt=""  height="108" width="192"/></a>
 	</header>
 	<!-- End header -->
 

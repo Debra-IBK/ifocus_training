@@ -28,7 +28,7 @@
 
 
         {{-- <div class="mt-4 mb-3">
-          <a class="btn btn-primary btn-wide" href="index.html">Skip now</a>
+          <a class="btn btn-primary btn-wide" href="#">Skip now</a>
         </div> --}}
 
         <p>Didn't receive an email? <a href="#">
