@@ -204,7 +204,7 @@
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    return fetch("{{ route('portal.capture.payment') }}", {
+                    return fetch("{{ route('portal.capture-payment') }}", {
                         method: 'post',
                         headers: {
                             'content-type': 'application/json'

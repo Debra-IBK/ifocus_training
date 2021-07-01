@@ -39,13 +39,13 @@ Route::namespace('App\Http\Controllers\Portal')->prefix('portal')->name('portal.
     Route::get('/profile', [Dashboard::class, 'profile'])->middleware('verified')->name('profile');
     Route::get('/make-payment', [Dashboard::class, 'make_payment'])->middleware('verified')->name('make-payment');
     Route::get('/payment-receipt', [Dashboard::class, 'payment_receipt'])->middleware('verified')->name('payment-receipt');
-    Route::post('process-payment', [PaymentProcesser::class, '__invoke'])->middleware('verified')->name('process.payment');
-    Route::post('capture-payment', [PaymentProcesser::class, 'captureOrder'])->middleware('verified')->name('capture.payment');
+    Route::post('process-payment', [PaymentProcesser::class, '__invoke'])->middleware('verified')->name('process-payment');
+    Route::post('capture-payment', [PaymentProcesser::class, 'captureOrder'])->middleware('verified')->name('capture-payment');
     
 });
 
-// Route::post('process-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, '__invoke'])->name('portal.process.payment');
-// Route::post('capture-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, 'captureOrder'])->name('portal.capture.payment');
+Route::post('process-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, '__invoke'])->name('portal.process.payment');
+Route::post('capture-payment', [App\Http\Controllers\Portal\PaymentProcesser::class, 'captureOrder'])->name('portal.capture.payment');
 
 Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function(){
     Route::get('/home', [DashboardController::class, 'index'])->middleware('auth')->name('home');
