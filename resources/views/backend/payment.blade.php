@@ -209,7 +209,7 @@
                         payment_type: $('#payment_type').val(),
                         amount: document.getElementById('amount').value,
                     };
-                    return fetch("{{ route('portal.capture.payment') }}", {
+                    return fetch("{{ route('portal.capture-payment') }}", {
                         headers: {
                             'content-type': 'application/json'
                         },
