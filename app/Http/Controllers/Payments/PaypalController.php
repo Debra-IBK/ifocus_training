@@ -79,11 +79,13 @@ class PaypalController extends Controller
             'meta_data' => $response
         ]);
         if ($payment['status'] == Payment::STATUS['success']) {
+            // 1. Register for course
             UserCourse::create([
                 'course_id' => $payment['course_id'],
                 'payment_id' => $payment['id']
             ]);
-            return  redirect()->route('portal.index')->with('success', 'Payment was successful');
+            // 2. Send Email
+            return  redirect()->route('portal.course.index')->with('success', 'Payment was successful');
         }
         return back()->with('error', 'Payment was unsuccessful!');
     }

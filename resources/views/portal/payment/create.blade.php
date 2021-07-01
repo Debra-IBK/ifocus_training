@@ -163,7 +163,7 @@
                 // This function captures the funds from the transaction.
                 return actions.order.capture().then(function(details) {
                     // This function shows a transaction success message to your buyer.
-                    window.location.replace("http://ifocustraining/portal/payment/captured/"+details.id);
+                    window.location.replace("{{env('APP_URL')}}portal/payment/captured/"+details.id);
                 });
             }
         }).render('#paypal-button-container');

@@ -48,7 +48,7 @@ Route::prefix('portal')->name('portal.')->middleware(['auth', 'verified'])->grou
         Route::post('process', [PaymentProcesser::class, 'createOrder'])->name('process');
         Route::get('captured/{payment:paypal_id}', [PaymentProcesser::class, 'capturedOrder'])->withoutMiddleware(['auth', 'verified'])->name('captured')->whereAlphaNumeric('payment');
     });
-    
+
     Route::prefix('course')->name('course.')->group(function () {
         Route::get('/', [CourseController::class, 'index'])->name('index');
     });
@@ -57,7 +57,6 @@ Route::prefix('portal')->name('portal.')->middleware(['auth', 'verified'])->grou
     Route::get('/zoom', [ZoomController::class, 'index'])->name('zoom');
     Route::get('/join-zoom', [ZoomController::class, 'join_zoom'])->name('join-zoom');
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
-    // Route::get('/make-payment', [Dashboard::class, 'make_payment'])->name('make-payment');
     Route::get('/payment-receipt', [DashboardController::class, 'payment_receipt'])->name('payment-receipt');
 });
 
