@@ -44,7 +44,9 @@
         <div class="col-md-4 col-sm-12 mb-30">
             <div class="card text-white bg-secondary card-box">
                 <div class="card-body">
-                    <h5 class="card-title text-white text-uppercase">view courses</h5>
+                    <a href="{{ route('portal.course.index') }}">
+                        <h5 class="card-title text-white text-uppercase">view courses</h5>
+                    </a>
                     <p class="card-text"></p>
                 </div>
             </div>
