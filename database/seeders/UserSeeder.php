@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         $user1->fname = 'Oluyinka';
         $user1->lname = 'Deo';
         $user1->email = 'debbieibk8@gmail.com';
-        $user1->user_group = 'student';
+        $user1->user_group = User::USER_GROUP['admin'];
         $user1->phone_no = '08023423491';
         $user1->password = bcrypt('secret');
         $user1->email_verified_at = now();
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
         $user2->fname = 'Mike';
         $user2->lname = 'Thomas';
         $user2->email = 'mike@thomas.com';
-        $user2->user_group = 'admin';
+        $user2->user_group = User::USER_GROUP['student'];
         $user2->phone_no = '08023423491';
         $user2->email_verified_at = now();
         $user2->password = bcrypt('secret');

@@ -9,12 +9,14 @@ class Payment extends Model
 {
     const STATUS = ['success' => 'success', 'pending' => 'pending', 'failed' => 'failed', 'timeout' => 'timeout'];
 
+    const PAYPAL_STATUS = ['CREATED', 'SAVED','APPROVED','VOIDED','COMPLETED','PAYER_ACTION_REQUIRED'];
+
     /**
      * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $guarded = ['user_id', 'reference_id', 'deleted_at', 'created_at', 'updated_at'];
+    protected $guarded = ['user_id', 'id', 'reference_id', 'deleted_at', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be hidden for arrays.

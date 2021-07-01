@@ -16,24 +16,26 @@ class CourseSeeder extends Seeder
     {
         //
         $course1 = new Courses();
-        $course1 ->user_id = '1';
-        $course1 ->name = 'Video Editing';
-        $course1 ->slug = 'video_editing';
-        $course1 ->amount = '$1000';
-        $course1 ->duration= '13';
-        $course1 ->zoom_link = "http://ifocustraining/create_course";
-        $course1 ->passcode = bcrypt('secret');
-        $course1 ->save();
+        $course1->user_id = '1';
+        $course1->name = 'Video Editing';
+        $course1->slug = 'video_editing';
+        $course1->amount = '$1000';
+        $course1->duration = '13';
+        $course1->zoom_link = "https://us05web.zoom.us/j/8616081209?pwd=dkEwVEVIK2R1RmRHaENYREFDY1hJUT09";
+        $course1->meeting_id = '861 608 1209';
+        $course1->passcode = 'Editing';
+        $course1->save();
 
 
         $course2 = new Courses();
-        $course2 ->user_id = '2';
-        $course2 ->name = 'Cinimatography';
-        $course2 ->slug = 'cinimatography';
-        $course2 ->amount = '$1000';
-        $course2 ->duration= '13';
-        $course2 ->zoom_link = "http://ifocustraining/create_course";
-        $course2 ->passcode = bcrypt('secret');
-        $course2 ->save();
+        $course2->user_id = '1';
+        $course2->name = 'Cinimatography';
+        $course2->slug = 'cinimatography';
+        $course2->amount = '$1000';
+        $course2->duration = '13';
+        $course2->zoom_link = "https://us05web.zoom.us/j/8616081209?pwd=dkEwVEVIK2R1RmRHaENYREFDY1hJUT09";
+        $course2->meeting_id = '861 608 1209';
+        $course2->passcode = 'Editing';
+        $course2->save();
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Payments;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\UserCourse;
 use Illuminate\Support\Facades\Http;
 
 class PaypalController extends Controller
@@ -32,41 +34,66 @@ class PaypalController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'verified']);
+        // $this->middleware(['auth', 'verified']);
         $this->setBaseUrl();
         $this->setkey();
         $this->setClientId();
         $this->getAccessToken();
     }
 
-    //
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function handlePayment(Request $request)
     {
         return $this->payment_processor($request);
     }
 
-    public function handleOrder(Request $request)
+    /**
+     * Handle verification of payment
+     *
+     * @param  \App\Models\Payment $payment
+     * @return \Illuminate\Http\Response
+     */
+    public function verifyPayment(Payment $payment)
     {
-        return $this->capture_order($request);
+        return $this->verify_order_details($payment);
     }
 
-    protected function capture_order(Request $request)
+    /**
+     * Handle verification of payment
+     *
+     * @param  \App\Models\Payment $payment
+     * @return \Illuminate\Http\Response
+     */
+    protected function verify_order_details(Payment $payment)
     {
-        return Http::withHeaders([
+        $response =  Http::withHeaders([
             'Content-Type' => 'application/json',
-        ])->withToken($this->accessToken)->post($this->baseUrl . 'v2/checkout/orders', [
-            'intent' => 'CAPTURE',
-            'purchase_units' => [
-                [
-                    "amount" =>  [
-                        "currency_code" => "USD",
-                        "value" => $request['amount']
-                    ]
-                ]
-            ],
-        ])->throw()->json();
+        ])->withToken($this->accessToken)->get($this->baseUrl . 'v2/checkout/orders/' . $payment['paypal_id'], [])->throw()->json();
+        $payment->update([
+            'status'    => $response['status'] == 'COMPLETED' ? Payment::STATUS['success'] : Payment::STATUS['pending'],
+            'meta_data' => $response
+        ]);
+        if ($payment['status'] == Payment::STATUS['success']) {
+            UserCourse::create([
+                'course_id' => $payment['course_id'],
+                'payment_id' => $payment['id']
+            ]);
+            return  redirect()->route('portal.index')->with('success', 'Payment was successful');
+        }
+        return back()->with('error', 'Payment was unsuccessful!');
     }
 
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     protected function payment_processor(Request $request)
     {
         $response =  Http::withHeaders([

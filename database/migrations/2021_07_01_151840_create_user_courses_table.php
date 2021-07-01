@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoursesTable extends Migration
+class CreateUserCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,16 @@ class CreateCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('user_courses', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
 
             $table->id();
-            $table->foreignId('user_id')->comment('The User who created the course');
-
-            $table->string('name');
-            $table->string('slug')->unique();
-
-            $table->string('amount');
-            $table->string('meeting_id');
-            $table->integer('duration')->comment('This should be stored in weeks');
-            $table->string('zoom_link');
-            $table->string('passcode');
-
+            $table->foreignId('user_id')->comment('The User who paid for this course');
+            $table->foreignId('course_id')->comment('The Course paid for by the user');
+            $table->foreignId('payment_id')->comment('The Payment record of the course');
+            
             $table->softDeletes();
             $table->timestamps();
         });
@@ -42,6 +35,6 @@ class CreateCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('user_courses');
     }
 }

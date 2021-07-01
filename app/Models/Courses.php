@@ -12,5 +12,17 @@ class Courses extends Model
    *
    * @var array
    */
-  protected $guarded = ['deleted_at', 'created_at', 'updated_at'];
+  protected $guarded = ['deleted_at', 'user_id', 'id', 'created_at', 'updated_at'];
+
+  /** 
+   * The "booted" method of the model.
+   *
+   * @return void
+   */
+  protected static function booted()
+  {
+    static::creating(function ($course) {
+      $course->user_id = auth()->user()->id;
+    });
+  }
 }

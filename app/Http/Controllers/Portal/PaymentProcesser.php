@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Portal;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Payments\PaypalController;
+use App\Models\Payment;
 
 class PaymentProcesser extends Controller
 {
@@ -15,13 +15,9 @@ class PaymentProcesser extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
-
-    
-
-    public function __invoke(Request $request)
+    public function createOrder(Request $request)
     {
-        (array) $valid = $request->validate([
+        $request->validate([
             'course'        => 'required|numeric',
             'payment_type'  => 'required|string|in:one-time,installment',
             'amount'        => 'required|numeric'
@@ -32,31 +28,16 @@ class PaymentProcesser extends Controller
         return $paypal->handlePayment($request);
     }
 
-
     /**
-     * Handle the incoming request.
+     * Handle verification of payment
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Payment $payment
+     * @param \App\Http\Controllers\Payments\PaypalController $paypal
+     * @param  string  $id
      * @return \Illuminate\Http\Response
      */
-    public function captureOrder(Request $request)
+    public function capturedOrder(Payment $payment, PaypalController $paypal)
     {
-        // (array) $valid = ;
-        return $this->captured_order($request->validate([
-            'orderID' => 'required|string',
-            'details' => 'required|json'
-        ]));
-    }
-
-    protected function captured_order(array $validated)
-    {
-         Log::debug('captured', $validated);
-         return response()->json([
-             'updated'
-         ]);
-        // Find the course in your database
-        // Use payment selected from your database
-        // $paypal = new PaypalController();
-        // return $paypal->handleOrder($request);
+        return $paypal->verifyPayment($payment);
     }
 }

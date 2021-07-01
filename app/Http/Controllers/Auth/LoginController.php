@@ -48,6 +48,6 @@ class LoginController extends Controller
      */
     protected function redirectTo()
     {
-        return auth()->user()->user_group == User::USER_GROUP['student'] ? '/home' : '/admin/home';
+        return auth()->user()->user_group == User::USER_GROUP['student'] ? '/portal/dashboard' : '/admin/dashboard';
     }
 }
