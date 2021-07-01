@@ -136,7 +136,7 @@
 						</a>
 					</li>
                     <li>
-						<a href="{{ route('portal.make-payment') }}" class="dropdown-toggle no-arrow">
+						<a href="{{ route('portal.payment.create') }}" class="dropdown-toggle no-arrow">
 							<span class="micon icon-copy fa fa-credit-card"></span><span class="mtext">Make Payment</span>
 						</a>
 					</li>

@@ -22,7 +22,7 @@ class Courses extends Model
   protected static function booted()
   {
     static::creating(function ($course) {
-      $course->user_id = auth()->user()->id;
+       $course->user_id = auth()->user()->id;
     });
   }
 }

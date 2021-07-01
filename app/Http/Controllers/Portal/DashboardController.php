@@ -26,4 +26,20 @@ class DashboardController extends Controller
     {
         return view('portal.index');
     }
+
+    public function replay_videos()
+    {
+        return view('portal.replay');
+    }
+
+    public function profile()
+    {
+        return view('portal.profile');
+    }
+
+    public function  payment_receipt()
+    {
+        return view('portal.receipt');
+    }
+    
 }
