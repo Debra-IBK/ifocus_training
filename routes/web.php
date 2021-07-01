@@ -35,6 +35,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->midd
 Route::namespace('App\Http\Controllers\Portal')->prefix('portal')->name('portal.')->middleware('verified')->group(function(){
 
     Route::get('/home', [Dashboard::class, 'index'])->middleware('verified')->name('home');
+    Route::get('/dashboard', [Dashboard::class, 'dashboard'])->middleware('verified')->name('dashboard');
     Route::get('/replay', [Dashboard::class, 'replay_videos'])->middleware('verified')->name('replay');
     Route::get('/zoom', [ZoomController::class, 'index'])->name('zoom');
     Route::get('/join-zoom', [ZoomController::class, 'join_zoom'])->name('join-zoom');

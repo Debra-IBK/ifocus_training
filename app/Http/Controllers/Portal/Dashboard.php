@@ -50,4 +50,8 @@ class Dashboard extends Controller
     }
    
 
+    public function  dashboard()
+    {
+        return view('backend/dashboard');
+    }
 }
