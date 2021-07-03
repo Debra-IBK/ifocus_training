@@ -1,11 +1,10 @@
-@extends('layouts.backend')
+@extends('layouts.portal')
 
 @section('css')
 @endsection
 @section('content')
 
-    <div class="main-container">
-        <div class="pd-ltr-20">
+    
             <div class="card-box pd-20 height-100-p mb-30">
                 <div class="row align-items-center">
                     <div class="col-md-8">
@@ -45,7 +44,7 @@
 						<div class="card text-white bg-secondary card-box">
 							{{-- <div class="card-header">CREATE COURSE</div> --}}
 							<div class="card-body">
-								<h5 class="card-title text-white">  <a href="{{ route('admin.courses.index') }}">
+								<h5 class="card-title text-white">  <a href="{{ route('admin.courses.index') }}" style="color: white">
                                     COURSE MANAGEMENT</a></h5>
 								<p class="card-text"></p>
 							</div>
@@ -55,7 +54,7 @@
 						<div class="card text-white bg-success card-box">
 							{{-- <div class="card-header">USER MANAGEMENT</div> --}}
 							<div class="card-body">
-                                <h5 class="card-title"><a href="{{ route('admin.users.index') }}">
+                                <h5 class="card-title"><a href="{{ route('admin.users.index') }}" style="color: white">
                                     USER MANAGEMENT</a></h5>
 								<p class="card-text"></p>
 							</div>
@@ -65,7 +64,7 @@
 						<div class="card text-black bg-warning card-box">
 							{{-- <div class="card-header"></div> --}}
 							<div class="card-body">
-								<h5 class="card-title"><a href="{{ route('admin.users.index') }}">
+								<h5 class="card-title"><a href="{{ route('admin.users.index') }}" style="color: white">
                                     STUDENTS MANAGEMENT</a></h5>
 								<p class="card-text"></p>
 							</div>
@@ -75,7 +74,7 @@
 						<div class="card text-white bg-info card-box">
 							{{-- <div class="card-header">Header</div> --}}
 							<div class="card-body">
-								<h5 class="card-title text-white"><a href="{{ route('admin.payments.index') }}">
+								<h5 class="card-title text-white"><a href="{{ route('admin.payments.index') }}" style="color: white">
                                     PAYMENTS</a></h5>
 								<p class="card-text"></p>
 							</div>
@@ -85,7 +84,7 @@
 						<div class="card text-white bg-dark card-box">
 							{{-- <div class="card-header">Header</div> --}}
 							<div class="card-body">
-								<h5 class="card-title text-white">Title</h5>
+								<h5 class="card-title text-white">CERTIFICATES</h5>
 								<p class="card-text"></p>
 							</div>
 						</div>

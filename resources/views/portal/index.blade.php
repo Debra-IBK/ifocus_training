@@ -25,7 +25,7 @@
                 {{-- {{ __('Please proceed to make payment') }} --}}
                 <p class="font-16">Please before you proceed to make payments make sure you've
                     read
-                    the <a href="{{ asset('pdf/file1.pdf') }}" style="color: red" target="_blank">full
+                    the <a href="{{ asset('backend/assets/img/file1.pdf') }}" style="color: red" target="_blank">full
                         details </a> about the training.</p>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <div class="card text-white bg-primary card-box">
                 <div class="card-body">
                     <a href="{{ route('portal.payment.create') }}">
-                        <h5 class="card-title text-white text-uppercase">pay for course</h5>
+                        <h5 class="card-title text-white text-uppercase">Make Payment</h5>
                     </a>
                     <p class="card-text"></p>
                 </div>
@@ -51,42 +51,42 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-12 mb-30">
-            <div class="card text-white bg-success card-box">
-                {{-- <div class="card-header">USER MANAGEMENT</div> --}}
-                <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    <p class="card-text"></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12 mb-30">
-            <div class="card text-black bg-warning card-box">
-                {{-- <div class="card-header"></div> --}}
-                <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    <p class="card-text"></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12 mb-30">
-            <div class="card text-white bg-info card-box">
-                {{-- <div class="card-header">Header</div> --}}
-                <div class="card-body">
-                    <h5 class="card-title text-white"></h5>
-                    <p class="card-text"></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12 mb-30">
-            <div class="card text-white bg-dark card-box">
-                {{-- <div class="card-header">Header</div> --}}
-                <div class="card-body">
-                    <h5 class="card-title text-white"></h5>
-                    <p class="card-text"></p>
-                </div>
-            </div>
-        </div>
+        <!--<div class="col-md-4 col-sm-12 mb-30">-->
+        <!--    <div class="card text-white bg-success card-box">-->
+        <!--        {{-- <div class="card-header">USER MANAGEMENT</div> --}}-->
+        <!--        <div class="card-body">-->
+        <!--            <h5 class="card-title"></h5>-->
+        <!--            <p class="card-text"></p>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
+        <!--<div class="col-md-4 col-sm-12 mb-30">-->
+        <!--    <div class="card text-black bg-warning card-box">-->
+        <!--        {{-- <div class="card-header"></div> --}}-->
+        <!--        <div class="card-body">-->
+        <!--            <h5 class="card-title"></h5>-->
+        <!--            <p class="card-text"></p>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
+        <!--<div class="col-md-4 col-sm-12 mb-30">-->
+        <!--    <div class="card text-white bg-info card-box">-->
+        <!--        {{-- <div class="card-header">Header</div> --}}-->
+        <!--        <div class="card-body">-->
+        <!--            <h5 class="card-title text-white"></h5>-->
+        <!--            <p class="card-text"></p>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
+        <!--<div class="col-md-4 col-sm-12 mb-30">-->
+        <!--    <div class="card text-white bg-dark card-box">-->
+        <!--        {{-- <div class="card-header">Header</div> --}}-->
+        <!--        <div class="card-body">-->
+        <!--            <h5 class="card-title text-white"></h5>-->
+        <!--            <p class="card-text"></p>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
     </div>
 @endsection
 

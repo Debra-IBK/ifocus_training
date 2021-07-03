@@ -61,7 +61,52 @@
                     </li>
                 </ul>
             @else
+                <ul id="accordion-menu">
+                    <li>
+                        <a href="{{ route('admin.home') }}" class="dropdown-toggle no-arrow">
+                            <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+                        </a>
+                    </li>
 
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
+                    {{-- <li>
+                        <div class="sidebar-small-cap">Extra</div>
+                    </li> --}}
+
+                    <li>
+                        <a href="{{ route('admin.payments.index') }}" class="dropdown-toggle no-arrow">
+                            <span class="micon icon-copy fa fa-video-camera"></span><span class="mtext">ZOOM</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.payments.index') }}" class="dropdown-toggle no-arrow">
+                            <span class="micon icon-copy fa fa-credit-card"></span><span class="mtext">PAYMENTS</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.courses.index') }}" class="dropdown-toggle no-arrow">
+                            <span class="micon dw dw-invoice"></span><span class="mtext">COURSES</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.users.index') }}" class="dropdown-toggle no-arrow">
+                            <span class="micon fa fa-users"></span><span class="mtext">USERS</span>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="{{ route('portal.replay') }}" target="_blank" class="dropdown-toggle no-arrow">
+                            <span class="micon dw dw-certificate"></span>
+                            <span class="mtext">CERTIFICATES </span>
+                        </a>
+                    </li>
+                </ul>
             @endif
 
         </div>

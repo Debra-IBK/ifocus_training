@@ -37,10 +37,10 @@
                                     <span>Phone Number:</span>
                                     {{ auth()->user()->phone_no }}
                                 </li>
-                                <li>
-                                    <span>Course</span>
-                                    America
-                                </li>
+                                <!--<li>-->
+                                <!--    <span>Course</span>-->
+                                <!--    America-->
+                                <!--</li>-->
                                
                             </ul>
                         </div>
