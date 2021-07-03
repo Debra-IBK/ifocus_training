@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class Payments extends Controller
 {
@@ -15,6 +16,9 @@ class Payments extends Controller
     public function index()
     {
         //
+        $payments= Payment::all()->with('user')->orderBy('created_at','desc');
+        dd($payments);
+        //return view('admin.payments.all', ['payments'=>$payments]);
     }
 
     /**
@@ -25,6 +29,7 @@ class Payments extends Controller
     public function create()
     {
         //
+
     }
 
     /**

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Payments;
 
+use App\Models\User;
 use App\Models\Payment;
+use App\Mail\TrainingDetails;
+use App\Models\UserCourse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Models\UserCourse;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class PaypalController extends Controller
 {
@@ -85,6 +87,13 @@ class PaypalController extends Controller
                 'payment_id' => $payment['id']
             ]);
             // 2. Send Email
+            $data = [
+                'name'=>auth()->user()->fname, 
+                'email'=>auth()->user()->email,
+                'full_name'=>auth()->user()->full_name
+            ];
+            Mail::to(auth()->user()->email)->send(new TrainingDetails($data));
+           
             return  redirect()->route('portal.course.index')->with('success', 'Payment was successful');
         }
         return back()->with('error', 'Payment was unsuccessful!');

@@ -10,6 +10,7 @@ use App\Http\Controllers\Portal\PaymentController;
 use App\Http\Controllers\Portal\DashboardController;
 use App\Http\Controllers\Admin\CourseController as AdminCourse;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\Payments;
 
 
 // use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -66,5 +67,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/create_course', [AdminCourse::class, 'index'])->middleware('auth')->name('create_course');
     Route::post('/create_course', [CourseController::class, 'submit_course'])->middleware('auth')->name('create_course');
 
-    Route::resource('users', 'UsersManagementContoller');
+    Route::resource('users', UsersManagementContoller::class);
+    Route::resource('payments', Payments::class);
 });

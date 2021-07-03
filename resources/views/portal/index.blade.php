@@ -23,7 +23,7 @@
 
                 {{ __('You are logged in!') }} <br>
                 {{-- {{ __('Please proceed to make payment') }} --}}
-                <p class="font-16 max-width-600">Please before you proceed to make payments make sure you've
+                <p class="font-16">Please before you proceed to make payments make sure you've
                     read
                     the <a href="{{ asset('pdf/file1.pdf') }}" style="color: red" target="_blank">full
                         details </a> about the training.</p>
