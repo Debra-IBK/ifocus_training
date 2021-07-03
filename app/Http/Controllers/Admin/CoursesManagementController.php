@@ -4,9 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Courses;
 
-class CoursesManagementContoller extends Controller
+class CoursesManagementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +20,8 @@ class CoursesManagementContoller extends Controller
     public function index()
     {
         //
+        $courses= Courses::orderBy('created_at','desc')->with(['user'])->get();
+        return view('admin.courses.all', ['courses'=>$courses]);
     }
 
     /**
@@ -24,7 +31,7 @@ class CoursesManagementContoller extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.courses.create');
     }
 
     /**

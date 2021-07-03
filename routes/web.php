@@ -9,8 +9,10 @@ use App\Http\Controllers\Portal\PaymentProcesser;
 use App\Http\Controllers\Portal\PaymentController;
 use App\Http\Controllers\Portal\DashboardController;
 use App\Http\Controllers\Admin\CourseController as AdminCourse;
+use App\Http\Controllers\Admin\CoursesManagementController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\Payments;
+use App\Http\Controllers\Admin\UsersManagementContoller;
 
 
 // use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -64,9 +66,10 @@ Route::prefix('portal')->name('portal.')->middleware(['auth', 'verified'])->grou
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminDashboard::class, 'index'])->middleware('auth')->name('home');
 
-    Route::get('/create_course', [AdminCourse::class, 'index'])->middleware('auth')->name('create_course');
-    Route::post('/create_course', [CourseController::class, 'submit_course'])->middleware('auth')->name('create_course');
+    // Route::get('/create_course', [AdminCourse::class, 'index'])->middleware('auth')->name('create_course');
+    // Route::post('/create_course', [CourseController::class, 'submit_course'])->middleware('auth')->name('create_course');
 
     Route::resource('users', UsersManagementContoller::class);
     Route::resource('payments', Payments::class);
+    Route::resource('courses', CoursesManagementController::class);
 });

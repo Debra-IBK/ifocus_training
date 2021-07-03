@@ -19,10 +19,16 @@ class Courses extends Model
    *
    * @return void
    */
-  protected static function booted()
-  {
-    static::creating(function ($course) {
-       $course->user_id = auth()->user()->id;
-    });
-  }
+    protected static function booted()
+    {
+        static::creating(function ($course) {
+        $course->user_id = auth()->user()->id;
+        });
+    }
+
+    public function user(){
+
+        return $this->hasOne(User::class, 'id', 'user_id');;
+
+    }
 }

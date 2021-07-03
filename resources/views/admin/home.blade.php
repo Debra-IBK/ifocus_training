@@ -45,7 +45,8 @@
 						<div class="card text-white bg-secondary card-box">
 							{{-- <div class="card-header">CREATE COURSE</div> --}}
 							<div class="card-body">
-								<h5 class="card-title text-white">COURSE MANAGEMENT</h5>
+								<h5 class="card-title text-white">  <a href="{{ route('admin.courses.index') }}">
+                                    COURSE MANAGEMENT</a></h5>
 								<p class="card-text"></p>
 							</div>
 						</div>
@@ -54,7 +55,8 @@
 						<div class="card text-white bg-success card-box">
 							{{-- <div class="card-header">USER MANAGEMENT</div> --}}
 							<div class="card-body">
-                                <h5 class="card-title">USER MANAGEMENT</h5>
+                                <h5 class="card-title"><a href="{{ route('admin.users.index') }}">
+                                    USER MANAGEMENT</a></h5>
 								<p class="card-text"></p>
 							</div>
 						</div>
@@ -63,7 +65,8 @@
 						<div class="card text-black bg-warning card-box">
 							{{-- <div class="card-header"></div> --}}
 							<div class="card-body">
-								<h5 class="card-title">STUDENTS MANAGEMENT</h5>
+								<h5 class="card-title"><a href="{{ route('admin.users.index') }}">
+                                    STUDENTS MANAGEMENT</a></h5>
 								<p class="card-text"></p>
 							</div>
 						</div>
@@ -72,7 +75,8 @@
 						<div class="card text-white bg-info card-box">
 							{{-- <div class="card-header">Header</div> --}}
 							<div class="card-body">
-								<h5 class="card-title text-white">PAYMENTS</h5>
+								<h5 class="card-title text-white"><a href="{{ route('admin.payments.index') }}">
+                                    PAYMENTS</a></h5>
 								<p class="card-text"></p>
 							</div>
 						</div>

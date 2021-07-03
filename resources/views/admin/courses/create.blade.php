@@ -1,29 +1,16 @@
-@extends('layouts.backend')
+@extends('layouts.portal')
 
-@section('css')
+@push('title')
+    {{ 'Courses' }}
+@endpush
+@push('css')
     <style>
-        /* Media query for mobile viewport */
-        @media screen and (max-width: 400px) {
-            #paypal-button-container {
-                width: 100%;
-            }
-        }
 
-        /* Media query for desktop viewport */
-        @media screen and (min-width: 400px) {
-            #paypal-button-container {
-                width: 250px;
-            }
-        }
 
     </style>
-@endsection
-@section('content')
+@endpush
 
-    <div class="main-container">
-        <div class="pd-ltr-20">
-            <div class="pd-ltr-20 xs-pd-20-10">
-                <div class="min-height-200px">
+@section('content')
                     <div class="page-header">
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
@@ -32,7 +19,8 @@
                                 </div>
                                 <nav aria-label="breadcrumb" role="navigation">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ route('admin.courses.index') }}">Courses Management</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Create Course</li>
                                     </ol>
                                 </nav>
@@ -54,7 +42,7 @@
                                     data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
                             </div> --}}
                         </div>
-                    <form method="POST" action="{{ route('admin.create_course') }}" role="form">
+                    <form method="POST" action="{{ route('admin.courses.store') }}" role="form">
                         @csrf
                         <div class="form-group row">
                             <label class="col-sm-6 col-md-2 col-form-label">Course name</label>
@@ -63,17 +51,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-md-2 col-form-label">Payment Option</label>
-                            <div class="col-sm-6 col-md-10">
-
-                                <select class="custom-select col-8" id="payment_type" name="payment_type">
-                                    <option selected disabled value="0">Select payment option</option>
-                                    <option value="one-time">One Time Payment</option>
-                                    <option value="installment">Instalmental</option>
-                                </select>
-                            </div>
-                        </div>
 
                         <div class="form-group row">
                             <label class="col-sm-6 col-md-2 col-form-label">Fee</label>
@@ -97,12 +74,39 @@
                         </div>
 
                         <div class="form-group row">
+                            <label class="col-sm-6 col-md-2 col-form-label">Meeting ID</label>
+                            <div class="col-sm-6 col-md-10">
+                                <input class="form-control col-8" type="text" id="meeting_id" name="meeting_id">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label class="col-sm-6 col-md-2 col-form-label">Passcode</label>
                             <div class="col-sm-6 col-md-10">
                                 <input class="form-control col-8" type="text" id="passcode" name="passcode">
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-md-2 col-form-label">Start Date</label>
+                            <div class="col-sm-6 col-md-10">
+                                <input class="form-control col-8" type="date" id="start_date" name="start_date">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-md-2 col-form-label">End Date</label>
+                            <div class="col-sm-6 col-md-10">
+                                <input class="form-control col-8" type="date" id="end_date" name="end_date">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-md-2 col-form-label">Payment Expiry Date</label>
+                            <div class="col-sm-6 col-md-10">
+                                <input class="form-control col-8" type="date" id="payment_exp_date" name="payment_exp_date">
+                            </div>
+                        </div>
+                       
 
                         <div class="form-group row">
                             <label class="col-sm-6 col-md-2 col-form-label"></label>
@@ -119,6 +123,9 @@
     </div>
 @endsection
 
-@section('js')
+@push('js')
+    {{--  --}}
+@endpush
 
-@endsection
+
+

@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Payment;
+use App\Models\UserCourse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class Payments extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,10 +20,8 @@ class Payments extends Controller
      */
     public function index()
     {
-        //
-        $payments= Payment::all()->with('user')->orderBy('created_at','desc');
-        dd($payments);
-        //return view('admin.payments.all', ['payments'=>$payments]);
+        $payments= Payment::orderBy('created_at','desc')->with('user','course')->get();
+        return view('admin.payments.all', ['payments'=>$payments]);
     }
 
     /**

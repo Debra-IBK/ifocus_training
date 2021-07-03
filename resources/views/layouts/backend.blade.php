@@ -53,19 +53,6 @@
 						<i class="icon-copy dw dw-notification"></i>
 						<span class="badge notification-active"></span>
 					</a>
-					<div class="dropdown-menu dropdown-menu-right">
-						<div class="notification-list mx-h-350 customscroll">
-							<ul>
-								<li>
-									<a href="#">
-										<img src="{{ asset('backend/assets/vendors/images/img.jpg') }}" alt="">
-										<h3>John Doe</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div class="user-info-dropdown">
@@ -131,16 +118,11 @@
 			<div class="sidebar-menu">
 				<ul id="accordion-menu">
                     <li>
-						<a href="{{ route('home') }}" class="dropdown-toggle no-arrow">
+						<a href="{{ route('admin.home') }}" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
 						</a>
 					</li>
-                    <li>
-						<a href="{{ route('portal.payment.create') }}" class="dropdown-toggle no-arrow">
-							<span class="micon icon-copy fa fa-credit-card"></span><span class="mtext">Make Payment</span>
-						</a>
-					</li>
-
+                  
                     <li>
 						<a href="{{ asset('backend/assets/img/file1.pdf') }}" target="_blank" class="dropdown-toggle no-arrow">
 							<span class="micon icon-copy fi-page-doc"></span><span class="mtext">Getting Started</span>
@@ -155,20 +137,27 @@
 					</li>
 
                     <li>
-						<a href="{{ route('admin.create_course') }}" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-invoice"></span><span class="mtext">Create Course</span>
+						<a href="{{ route('admin.payments.index') }}" class="dropdown-toggle no-arrow">
+							<span class="micon icon-copy fa fa-credit-card"></span><span class="mtext">ZOOM</span>
 						</a>
 					</li>
 
                     <li>
-						<a href="{{ route('portal.payment-receipt') }}" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-invoice"></span><span class="mtext">Payment Receipt</span>
+						<a href="{{ route('admin.payments.index') }}" class="dropdown-toggle no-arrow">
+							<span class="micon icon-copy fa fa-credit-card"></span><span class="mtext">PAYMENTS</span>
+						</a>
+					</li>
+
+
+                    <li>
+						<a href="{{ route('admin.courses.index') }}" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-invoice"></span><span class="mtext">COURSES</span>
 						</a>
 					</li>
 
                     <li>
-						<a href="{{ route('portal.replay') }}" class="dropdown-toggle no-arrow">
-							<span class="micon icon-copy fi-play-video"></span><span class="mtext">Training Replay</span>
+						<a href="{{ route('admin.users.index') }}" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-invoice"></span><span class="mtext">USERS</span>
 						</a>
 					</li>
 
@@ -176,7 +165,7 @@
 					<li>
 						<a href="{{ route('portal.replay') }}" target="_blank" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-certificate"></span>
-							<span class="mtext">Certification </span>
+							<span class="mtext">CERTIFICATES </span>
 						</a>
 					</li>
 				</ul>

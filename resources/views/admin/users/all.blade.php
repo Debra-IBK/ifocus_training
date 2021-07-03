@@ -1,94 +1,116 @@
-@extends('layouts.backend')
+@extends('layouts.portal')
 
-@section('css')
-  
-@endsection
+@push('title')
+    {{ 'Users' }}
+@endpush
+@push('css')
+    <style>
+
+
+    </style>
+@endpush
+
 @section('content')
-
-<div class="main-container">
-    <div class="pd-ltr-20 xs-pd-20-10">
-        <div class="min-height-200px">
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="title">
-                            <h4>Users</h4>
-                        </div>
-                        <nav aria-label="breadcrumb" role="navigation">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Users</li>
-                            </ol>
-                        </nav>
-                    </div>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h4>USERS MANAGEMENT</h4>
                 </div>
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Users Management</li>
+                    </ol>
+                </nav>
             </div>
-           
-            {{-- <div class="pd-20 card-box mb-30">
-                <div class="clearfix mb-20">
-                    <div class="pull-left">
-                        <h4 class="text-blue h4">Striped table</h4>
-                        <p>Add <code>.table  .table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.</p>
-                    </div>
-                    <div class="pull-right">
-                        <a href="#striped-table" class="btn btn-primary btn-sm scroll-click" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
-                    </div>
-                </div> --}}
-            <div class="pd-20 card-box mb-30">
-                <div class="clearfix mb-20">
-                    <h4 class="text-blue h4">ALL USERS</h4>
-                </div>
-                <div class="pb-20">
-                    <div class="table-responsive">
-                    <table class="table data-table-export nowrap">
-                        <thead>
-                            <tr>
-                                <th class="sdatatable-nosort">S/N</th>
-                                <th>NAME</th>
-                                <th class="datatable-nosort">EMAIL</th>
-                                <th class="datatable-nosort">PHONE NO</th>
-                                <th class="datatable-nosort">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($users as $user)
-                            <tr>
-                                <td class="table-plus">1</td>
-                                <td>{{ $user['full_name'] }}</td>
-                                <td>{{ $user['email'] }}</td>
-                                <td>{{ $user['phone_no'] }} </td>
-                                <td><span class="badge badge-primary">Primary</span><span class="badge badge-primary">Primary</span><span class="badge badge-primary">Primary</span></td>
-                            </tr>
-                            @endforeach
-                         
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
-      
     </div>
-</div>
-@endsection
 
-@section('js')
-    <script src="{{ asset('backend/assets/src/plugins/datatables/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/dataTables.responsive.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/responsive.bootstrap4.min.js') }}"></script> 
+    <div class="pd-20 card-box mb-30">
+        <div class="clearfix mb-20">
+            <div class="pull-left">
+                <h4 class="text-blue h4">All Users</h4>
+                {{-- <p>Add class <code>.table</code></p> --}}
+            </div>
+            <div class="pull-right">
+                <a href="{{ route('admin.users.create') }}" class="btn btn-primary" rel="content-y" role="button">Add new user</a>
+            </div>
+        </div>
+        @if($users->count())
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email </th>
+                            <th scope="col">Phone No. </th>
+                            <th scope="col">Group</th>
+                            <th scope="col">Actions </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                    
+                        <tr>
+                            <td scope="row">{{ $loop->iteration }}</td>
+                            <td scope="row">{{ $user['full_name'] }}</td>
+                            <td scope="row">{{ $user['email'] }}</td>
+                            <td scope="row">{{ $user['phone_no'] }}</td>
+                            <td scope="row">{{ $user['user_group'] }}</td>
+                            <td scope="row"> 
+                                <div class="modal fade" id="Medium-modal{{ $user['uuid'] }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myLargeModalLabel">Details</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Name: {{ $user['full_name'] }}</p>
+                                                <p>Email: {{ $user['email'] }}</p>
+                                                <p>Phone No.: {{ $user['phone_no'] }}</p>
+                                                <p>User Group: {{ $user['user_group'] }}</p>
+                                                <p>Reg Date: {{ $user['created_at'] }}</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                        <i class="dw dw-more"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                        {{-- <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a> --}}
+                                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#Medium-modal{{ $user['uuid'] }}" type="button">
+                                            <i class="dw dw-eye"></i>View
+                                        </a>
+                                        
+                                        <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+                                        <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @else
+            <div class="title">
+                <h4>No records</h4>
+            </div>
+        @endif
 
-    <!-- buttons for Export datatable -->
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/dataTables.buttons.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/buttons.bootstrap4.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/buttons.print.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/buttons.html5.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/buttons.flash.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/pdfmake.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/src/plugins/datatables/js/vfs_fonts.js') }}"></script>
-	<!-- Datatable Setting js -->
-	<script src="{{ asset('backend/assets/vendors/scripts/datatable-setting.js') }}"></script>
     
+    </div>
 @endsection
+
+@push('js')
+    {{--  --}}
+@endpush
