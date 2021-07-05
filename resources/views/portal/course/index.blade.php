@@ -46,7 +46,8 @@
                             <th scope="row">{{ $user['course']['name'] }}</th>
                             <th scope="row">{{ $user['course']['duration'] }} Weeks</th>
                             <th scope="row"> {{ $user['course']['start_date'] }} </th>
-                            <th scope="row"> <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#alert-modal" type="button">Join Class Now</a> </th>
+                            {{-- <th scope="row"> <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#alert-modal" type="button">Join Class Now</a> </th> --}}
+                            <th scope="row"> <a href="{{ route('portal.course.show', $user['course']['slug']) }}" class="btn btn-primary btn-sm" >Join Class Now</a> </th>
                            
                         </tr>
                     @endforeach

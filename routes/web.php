@@ -39,6 +39,12 @@ Route::get('/', function () {
 //Auth::routes();
 Auth::routes(['verify' => true]);
 
+Route::get('home', function () {
+    return (auth()->user())
+        ? (auth()->user()->user_group == \App\Models\User::USER_GROUP['student'] ? '/portal/dashboard' : '/admin/dashboard')
+        : '/login';
+    // return view('auth.login')->name('home');
+});
 
 // Only verified users may access this route...
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -54,6 +60,7 @@ Route::prefix('portal')->name('portal.')->middleware(['auth', 'verified'])->grou
 
     Route::prefix('course')->name('course.')->group(function () {
         Route::get('/', [CourseController::class, 'index'])->name('index');
+        Route::get('show/{course:slug}', [CourseController::class, 'show'])->name('show')->whereAlpha('slug');
     });
 
     Route::get('/replay', [DashboardController::class, 'replay_videos'])->name('replay');

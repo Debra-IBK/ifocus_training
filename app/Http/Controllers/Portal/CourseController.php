@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Portal;
 
 use App\Http\Controllers\Controller;
+use App\Models\Courses;
 use App\Models\UserCourse;
 use Illuminate\Http\Request;
 
@@ -28,5 +29,11 @@ class CourseController extends Controller
         return view('portal.course.index', [
             'courses' => UserCourse::getPaidCourse(request()->user()),
         ]);
+    }
+
+    
+    public function show(Request $request, Courses $course)
+    {
+        dd($course);
     }
 }
