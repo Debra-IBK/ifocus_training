@@ -70,7 +70,7 @@
  
      <script src="{{ asset('backend/assets/tool.js')}}"></script> 
      <script src="{{ asset('backend/assets/vconsole.min.js')}}"></script> 
-     <script src="{{ asset('backend/assets/meeting.js')}}"></script> 
+     {{-- <script src="{{ asset('backend/assets/meeting.js')}}"></script>  --}}
  
      <script>
          (function() {
@@ -85,9 +85,9 @@
              const meetConfig = {
                  apiKey: '{{$api_key}}',
                  meetingNumber: '{{$meeting_number}}',
-                 leaveUrl: 'http://ifocustraining/portal/zoom',
-                 userName: "{{$user->surname . ' '. $user->othernames }}",
-                 userEmail: "{{$user->email}}",
+                 leaveUrl: "{{route('portal.course.index')}}",
+                 userName: "{{auth()->user()->full_name }}",
+                 userEmail: "{{auth()->user()->email}}",
                  passWord: '{{$key}}', // if required
                  role: 0 // 1 for host; 0 for attendee
              };

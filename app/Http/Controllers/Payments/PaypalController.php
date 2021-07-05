@@ -76,6 +76,7 @@ class PaypalController extends Controller
         $response =  Http::withHeaders([
             'Content-Type' => 'application/json',
         ])->withToken($this->accessToken)->get($this->baseUrl . 'v2/checkout/orders/' . $payment['paypal_id'], [])->throw()->json();
+        
         $payment->update([
             'status'    => $response['status'] == 'COMPLETED' ? Payment::STATUS['success'] : Payment::STATUS['pending'],
             'meta_data' => $response
@@ -92,7 +93,7 @@ class PaypalController extends Controller
                 'email'=>auth()->user()->email,
                 'full_name'=>auth()->user()->full_name
             ];
-            Mail::to(auth()->user()->email)->send(new TrainingDetails($data));
+            // Mail::to(auth()->user()->email)->send(new TrainingDetails($data));
            
             return  redirect()->route('portal.course.index')->with('success', 'Payment was successful');
         }

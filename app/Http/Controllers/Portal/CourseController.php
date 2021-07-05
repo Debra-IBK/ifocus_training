@@ -31,9 +31,35 @@ class CourseController extends Controller
         ]);
     }
 
-    
+
     public function show(Request $request, Courses $course)
     {
-        dd($course);
+
+        return view('portal.course.show', [
+            'key' => $course['passcode'],
+            'api_key' => env('ZOOM_API_KEY'),
+            'api_secret' => env('ZOOM_API_SECRET'),
+            'role' => 0,
+            'meeting_number' => trim($course['meeting_id']),
+            'signature' => $this->generate_signature(env('ZOOM_API_KEY'), env('ZOOM_API_SECRET'), $course['meeting_id'], 0)
+        ]);
+    }
+
+    /**
+     * Generate a Signature to be used in Zoom API request.
+     *
+     * @param  mixed  $api_key 
+     * @param  mixed  $api_secret
+     * @param  int  $meeting_number
+     * @param  int  $role
+     * @return string
+     */
+    protected function generate_signature($api_key, $api_secret, $meeting_number, $role)
+    {
+        $time = time() * 1000 - 30000; //time in milliseconds (or close enough)
+        $data = base64_encode($api_key . $meeting_number . $time . $role);
+        $hash = hash_hmac('sha256', $data, $api_secret, true);
+        $_sig = $api_key . "." . $meeting_number . "." . $time . "." . $role . "." . base64_encode($hash);
+        return rtrim(strtr(base64_encode($_sig), '+/', '-_'), '=');
     }
 }
