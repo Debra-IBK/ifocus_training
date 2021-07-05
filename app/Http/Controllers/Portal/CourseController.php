@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Portal;
-
-use App\Http\Controllers\Controller;
 use App\Models\Courses;
 use App\Models\UserCourse;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CourseController extends Controller
 {
@@ -35,13 +35,14 @@ class CourseController extends Controller
     public function show(Request $request, Courses $course)
     {
 
+        $meeting_id=(int) Str::replace(' ', '', $course['meeting_id']);
         return view('portal.course.show', [
             'key' => $course['passcode'],
             'api_key' => env('ZOOM_API_KEY'),
             'api_secret' => env('ZOOM_API_SECRET'),
             'role' => 0,
-            'meeting_number' => trim($course['meeting_id']),
-            'signature' => $this->generate_signature(env('ZOOM_API_KEY'), env('ZOOM_API_SECRET'), $course['meeting_id'], 0)
+            'meeting_number' => $meeting_id,
+            'signature' => $this->generate_signature(env('ZOOM_API_KEY'), env('ZOOM_API_SECRET'), $meeting_id, 0)
         ]);
     }
 
