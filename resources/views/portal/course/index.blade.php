@@ -35,7 +35,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Course Name</th>
                         <th scope="col">Course Duration </th>
-                        <th scope="col">Course Date </th>
+                        <th scope="col">Commencement Date </th>
                         <th scope="col">Actions </th>
                     </tr>
                 </thead>
@@ -46,19 +46,31 @@
                             <th scope="row">{{ $user['course']['name'] }}</th>
                             <th scope="row">{{ $user['course']['duration'] }} Weeks</th>
                             <th scope="row"> {{ $user['course']['start_date'] }} </th>
-                            <th scope="row"> <a href="#" class="btn btn-primary btn-sm">Join Now</a> </th>
+                            <th scope="row"> <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#alert-modal" type="button">Join Class Now</a> </th>
+                           
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         @else
             <div class="title">
-                <h4>No Course Registered for yet?</h4>
+                <h4>No Course Registered for yet?  <a href="{{ route('portal.payment.create') }}" class="btn btn-primary btn-sm">Register Now</a></h4>
             </div>
         @endif
 
 
     </div>
+    <div class="modal fade" id="alert-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-sm modal-dialog-centered">
+									<div class="modal-content bg-danger text-white">
+										<div class="modal-body text-center">
+											<h3 class="text-white mb-15"><i class="micon icon-smile"></i> Hello</h3>
+											<p>START DATE: AUGUST 2021</p>
+											<button type="button" class="btn btn-light" data-dismiss="modal">Ok</button>
+										</div>
+									</div>
+								</div>
+							</div>
 @endsection
 
 @push('js')
